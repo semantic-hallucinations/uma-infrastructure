@@ -20,12 +20,7 @@ https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
 
 ## Создайте секреты с токенами доступа к гитхабу для каждого неймспейса(иначе образы не будут пуллится)
 
-```kubectl create secret docker-registry github-cr \
-    --docker-server=ghcr.io \
-    --docker-username=<ваш_логин_github> \
-    --docker-password=<ваш_PAT> \
-    --docker-email=any@example.com \
-    -n <ваш_namespace>```
+`kubectl create secret docker-registry github-cr --docker-server=ghcr.io --docker-username=<ваш_логин_github> --docker-password=<ваш_PAT> --docker-email=any@example.com -n <ваш_namespace>`
 
 ## Из .env сервиса необходимо вручную создать секрет для сервиса
 
