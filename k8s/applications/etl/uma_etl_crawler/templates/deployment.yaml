@@ -26,3 +26,5 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Values.secretName | default (printf "%s-secrets" .Release.Name) }}
+      imagePullSecrets:
+        - name: github-cr 

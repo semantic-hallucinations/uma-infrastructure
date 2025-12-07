@@ -1,9 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: semantic-hallucinations/uma-etl-crawler
+  repository: ghcr.io/semantic-hallucinations/uma-etl-crawler
   tag: main-2025-12-07-20h28m
   pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
 
 env:
   LOG_LEVEL: "info"
