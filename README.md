@@ -10,6 +10,8 @@ https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
 
 `minikube start --driver=docker`
 
+Также вам нужно будет установить утилиты kubectl и helm
+
 ## Создайте неймспейсы
 
 Команды для создания:
