@@ -7,6 +7,7 @@ service:
   type: ClusterIP
   port: 8080
 env:
-  LOG_LEVEL: "info"
-  API_URL: "https://api.prod.example.com"
-secretName: uma-telegram-client-secrets
+  BOT_USERNAME: "bsuir_assistant_bot"
+  N8N_SERVICE_ADDR: "http://localhost:808"
+  N8N_ANSWER_FORMAT: "DEFAULT"
+  secretName: uma-telegram-client-secrets
