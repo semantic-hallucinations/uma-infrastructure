@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-postgresql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-postgresql
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-postgresql
+    spec:
+      containers:
+        - image: postgres:16
+          name: {{ .Release.Name }}-postgresql
+          ports:
+            - containerPort: {{ .Values.psqlService.targetPort }}
+          volumeMounts:
+            - name: {{ .Release.Name }}-postgresql-pvc
+              mountPath: /var/lib/postgresql/data
+          env:
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secretName | default (printf "%s-secrets" .Release.Name) }}
+      restartPolicy: Always
+      volumes:
+        - name: {{ .Release.Name }}-postgresql-pvc
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-postgresql-pvc
+

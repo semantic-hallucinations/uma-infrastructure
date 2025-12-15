@@ -1,0 +1,42 @@
+replicaCount: 1
+image:
+  repository: n8nio/n8n
+  tag: stable
+  pullPolicy: IfNotPresent
+
+resources:
+  requests:
+    memory: "250Mi"
+  limits:
+    memory: "500Mi"
+
+service:
+  type: ClusterIP
+  name: "n8n"
+  port: "5678"
+  targetPort: "5678"
+
+psqlService:
+  type: ClusterIP
+  name: "postgresql"
+  port: "5432"
+  targetPort: "5432"
+
+ingress:
+  enabled: false
+env:
+  N8N_HOST: "localhost"
+  N8N_PORT: "5678"
+  secretName: n8n-secrets
+
+pvc:
+  n8n:
+    storage: "1Gi"
+  postgres:
+    storage: "1Gi"
+
+  pgdata: "/var/lib/postgresql/data/pgdata"
+  port: "5432"
+  storageSize: "100Mi"
+  storage:
+    size: 1000Mi
