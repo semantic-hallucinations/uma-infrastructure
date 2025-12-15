@@ -1,0 +1,78 @@
+image:
+  repository: ollama/ollama
+  pullPolicy: IfNotPresent
+  tag: "0.13.3"
+
+ollama:
+  port: 11434
+  
+  gpu:
+    enabled: false
+    # type: 'nvidia'
+    # number: 1
+
+  models: 
+    pull: 
+      - all-minilm
+      - smollm
+  insecure: false
+
+service:
+  type: ClusterIP 
+  port: 11434
+
+persistentVolume:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 6Gi   
+
+tests:
+  enabled: false
+
+knative:
+  enabled: false
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+deployment:
+  labels: {}
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+volumes: []
+volumeMounts: []
+extraArgs: []
+extraEnv: []
+extraEnvFrom: []
+initContainers: []
+lifecycle: {}
+updateStrategy:
+  type: "Recreate"
+livenessProbe:
+  # -- Enable livenessProbe
+  enabled: false
+readinessProbe:
+  # -- Enable readinessProbe
+  enabled: false
+# resources:
+#   requests:
+#     memory: 4Gi  
+#     cpu: 1000m    
+#   limits:
+#     memory: 8Gi  
+#     cpu: 4000m    
