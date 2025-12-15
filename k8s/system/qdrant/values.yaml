@@ -1,0 +1,91 @@
+replicaCount: 1
+
+image:
+  repository: docker.io/qdrant/qdrant
+  tag: "v1.13.0" 
+  pullPolicy: IfNotPresent
+  useUnprivilegedImage: false
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    memory: 1Gi 
+
+service:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 6333
+      targetPort: 6333
+      protocol: TCP
+    - name: grpc
+      port: 6334
+      targetPort: 6334
+      protocol: TCP
+
+persistence:
+  accessModes: ["ReadWriteOnce"]
+  size: 1Gi   
+  annotations: {}
+  # storageClassName: "" 
+
+config:
+  cluster:
+    enabled: true
+    p2p:
+      port: 6335
+      enable_tls: false
+    consensus:
+      tick_period_ms: 100
+
+apiKey: false
+readOnlyApiKey: false
+
+args: ["./config/initialize.sh"]
+startupProbe:
+  enabled: false
+  failureThreshold: 30
+  periodSeconds: 10
+
+livenessProbe:
+  enabled: false
+  initialDelaySeconds: 60
+
+readinessProbe:
+  enabled: false
+  initialDelaySeconds: 30
+
+podDisruptionBudget:
+  enabled: false 
+nodeSelector: {}
+tolerations: []
+affinity: {}
+podAnnotations: {}
+podLabels: {}
+additionalLabels: {}
+additionalAnnotations: {}
+ingress:
+  enabled: false
+sidecarContainers: []
+metrics:
+  serviceMonitor:
+    enabled: false
+serviceAccount:
+  annotations: {}
+snapshotPersistence:
+  enabled: false
+snapshotRestoration:
+  enabled: false
+
+chartTests:
+  dbInteraction:
+    image: registry.suse.com/bci/bci-base:latest
+    resources:
+      requests:
+        cpu: 100m
+        memory: 200Mi
+      limits:
+        cpu: 100m
+        memory: 200Mi
