@@ -27,3 +27,7 @@ https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
 ## Из .env сервиса необходимо вручную создать секрет для сервиса
 
 `kubectl create secret generic uma-etl-crawler-secrets --from-env-file=/path/to/.env.example -n <ваш_namespace>`
+
+## Скрипты для создания приложений
+
+Используйте create.sh для создания чартов по выбору.

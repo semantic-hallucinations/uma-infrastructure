@@ -7,7 +7,8 @@ service:
   type: ClusterIP
   port: 8080
 env:
-  BOT_USERNAME: "bsuir_assistant_bot"
-  N8N_SERVICE_ADDR: "http://localhost:808"
-  N8N_ANSWER_FORMAT: "DEFAULT"
-  secretName: uma-telegram-client-secrets
+  REDIS_HOST: redis
+  REDIS_PORT: 6379
+  REDIS_SCHEDULE_CACHE_TTL: 600
+  REDIS_CURR_WEEK_CACHE_TTL: 5000
+  secretName: uma-mcp-server-secrets

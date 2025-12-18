@@ -2,6 +2,7 @@
 
 charts=(
   "uma-telegram-client"
+  "uma-mcp-server"
 )
 
 envs=("minikube")
@@ -35,11 +36,17 @@ case "$chart_name:$env" in
 
   #--------------------- uma-telegram-client --------------------
   "uma-telegram-client:minikube")
-    values_path="applications/uma-telegram-client/values-main.yaml"
-    chart_path="applications/uma-telegram-client"
+    values_path="applications/ai/uma_telegram_client/values-main.yaml"
+    chart_path="applications/ai/uma_telegram_client"
     namespace="ai"
     ;;
-
+  
+  #--------------------- uma-mcp-server --------------------
+  "uma-mcp-server:minikube")
+    values_path="applications/ai/uma_mcp_server/values-main.yaml"
+    chart_path="applications/ai/uma_mcp_server"
+    namespace="ai"
+    ;;
 
   *)
     echo "Unknown chart and environment combination."

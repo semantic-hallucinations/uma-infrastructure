@@ -5,6 +5,8 @@ charts=(
   "n8n"
   "ollama"
   "qdrant"
+  "data-service-portgres"
+  "data-service-redis"
 )
 
 envs=("minikube")
@@ -61,6 +63,20 @@ case "$chart_name:$env" in
   "qdrant:minikube")
     values_path="qdrant/values.yaml"
     chart_path="qdrant"
+    namespace="ai"
+    ;;
+  
+  #--------------------- data-service-postgres --------------------
+  "data-service-postgres:minikube")
+    values_path="data-service-postgres/values.yaml"
+    chart_path="data-service-postgres"
+    namespace="ai"
+    ;;
+
+  #--------------------- data-service-redis --------------------
+  "data-service-redis:minikube")
+    values_path="data-service-redis/values.yaml"
+    chart_path="data-service-redis"
     namespace="ai"
     ;;
 
