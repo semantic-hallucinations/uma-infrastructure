@@ -1,0 +1,13 @@
+replicaCount: 1
+image:
+  repository: ghcr.io/semantic-hallucinations/uma-mcp-server
+  tag: main-2025-12-14-22h46m
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8080
+env:
+  BOT_USERNAME: "bsuir_assistant_bot"
+  N8N_SERVICE_ADDR: "http://localhost:808"
+  N8N_ANSWER_FORMAT: "DEFAULT"
+  secretName: uma-telegram-client-secrets
