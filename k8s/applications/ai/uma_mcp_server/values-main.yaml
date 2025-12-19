@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: ghcr.io/semantic-hallucinations/uma-mcp-server
-  tag: main-2025-12-19-07h18m
+  tag: main-2025-12-19-12h28m
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
