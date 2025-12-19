@@ -24,11 +24,9 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
-            {{- range $key, $value := .Values.secrets }}
           envFrom:
             - secretRef:
-                name: {{ .Values.secretName | default (printf "%s-secrets" .Release.Name) }}
-            - name: {{ $key }}
+                name: {{ .Values.secretName | default (printf "%s-secrets" $.Release.Name) }}
           volumeMounts:
             - name: data
               mountPath: /var/lib/postgresql/data

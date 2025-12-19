@@ -5,7 +5,7 @@ charts=(
   "n8n"
   "ollama"
   "qdrant"
-  "data-service-portgres"
+  "data-service-postgres"
   "data-service-redis"
 )
 

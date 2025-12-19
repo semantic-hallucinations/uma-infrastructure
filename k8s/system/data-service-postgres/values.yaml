@@ -1,4 +1,4 @@
-image: postgres:16
+image: postgres:17
 
 secrets:
   POSTGRES_DB: {}

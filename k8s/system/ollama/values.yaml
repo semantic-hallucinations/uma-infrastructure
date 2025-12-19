@@ -13,8 +13,7 @@ ollama:
 
   models: 
     pull: 
-      - all-minilm
-      - smollm
+      - nomic-embed-text:v1.5
   insecure: false
 
 service:

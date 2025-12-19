@@ -1,2 +1,3 @@
 *.txt
 .env
+bsuir_db_dump.sql
