@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: ghcr.io/semantic-hallucinations/uma-event-storage
-  tag: main-2025-12-21-15h02m
+  tag: main-2025-12-21-15h52m
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
