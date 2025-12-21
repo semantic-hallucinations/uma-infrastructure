@@ -16,6 +16,8 @@ spec:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+            - containerPort: 8080
           {{- if or .Values.env .Values.secrets }}
           env:
             {{- range $name, $value := .Values.env }}
