@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: ghcr.io/semantic-hallucinations/uma-telegram-client
-  tag: main-2025-12-21-18h14m
+  tag: main-2025-12-21-18h22m
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
