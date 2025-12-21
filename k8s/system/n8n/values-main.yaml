@@ -1,14 +1,14 @@
 replicaCount: 1
 image:
   repository: n8nio/n8n
-  tag: stable
+  tag: 2.1.1
   pullPolicy: IfNotPresent
 
 resources:
   requests:
     memory: "250Mi"
   limits:
-    memory: "500Mi"
+    memory: "2Gi"
 
 service:
   type: ClusterIP
@@ -27,6 +27,7 @@ ingress:
 env:
   N8N_HOST: "localhost"
   N8N_PORT: "5678"
+  N8N_USER_MANAGEMENT_DISABLED: "true"
   secretName: n8n-secrets
 
 pvc:
